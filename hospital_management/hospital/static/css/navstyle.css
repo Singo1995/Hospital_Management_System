@@ -1,4 +1,15 @@
 .nav-link:hover{
     color: white;
     background-color: gray;
+    border-radius: 10px;
+}
+.center {
+    text-align: center;
+    border: 3px solid gray;
+  }
+.a:hover{
+    color: black;
+    background-color: white;
+    box-shadow: 2.5px 5px grey;
+
 }

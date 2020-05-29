@@ -1,32 +1,63 @@
 <html lang="en">
-    {% load static%}
+ 
 <head>
+    {% load static%}
   <title>Hospital Management System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel ="stylesheet" type="text/css" href="{% static 'css/navstyle.css' %}">
 </head>
 <div class="container">
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <ul class="navbar-nav">
+      {% if not request.user.is_staff%}
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-home"></i> Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About Us</a>
+        <a class="nav-link" href="{% url 'about' %}">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Register</a>
-      </li>
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li> 
+      {% endif %}
+      {% if request.user.is_staff %}
       <li class="nav-item">
-        <a class="nav-link" href="#">Log in</a>
+        <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i>Home</a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Doctor</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Add Doctor</a>
+        <a class="dropdown-item" href="{% url 'view_doctor' %}">View Doctor</a>
+      </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Patient</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Add Patient</a>
+        <a class="dropdown-item" href="#">Edit Patient</a>
+      </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Appointment</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Add Appointment</a>
+        <a class="dropdown-item" href="#">Edit Appointment</a>
+      </div>
+      </li>     
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      {% endif %}
     </ul>
   </nav>
   </div>
