@@ -10,7 +10,30 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<link rel ="stylesheet" type="text/css" href="{% static 'css/navstyle.css' %}">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js""></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+  <link rel ="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+  <link rel ="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+  <link rel ="stylesheet" type="text/css" href="{% static 'css/navstyle.css' %}">
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+</script>
 </head>
 <div class="container">
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
@@ -36,22 +59,22 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown">Doctor</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Add Doctor</a>
+        <a class="dropdown-item" href="{% url 'add_doctor' %}">Add Doctor</a>
         <a class="dropdown-item" href="{% url 'view_doctor' %}">View Doctor</a>
       </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown">Patient</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Add Patient</a>
-        <a class="dropdown-item" href="#">Edit Patient</a>
+        <a class="dropdown-item" href="{% url 'add_patient' %}">Add Patient</a>
+        <a class="dropdown-item" href="{% url 'view_patient' %}">View Patient</a>
       </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown">Appointment</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Add Appointment</a>
-        <a class="dropdown-item" href="#">Edit Appointment</a>
+        <a class="dropdown-item" href="{% url 'add_appointment' %}">Add Appointment</a>
+        <a class="dropdown-item" href="{% url 'view_appointment' %}">View Appointment</a>
       </div>
       </li>     
       <li class="nav-item">

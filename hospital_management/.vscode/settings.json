@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "/home/arjun-singh/.virtualenvs/backend-YA2nyVIJ/bin/python"
+    "python.pythonPath": "/home/arjun-singh/Arjun/django/venv/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
